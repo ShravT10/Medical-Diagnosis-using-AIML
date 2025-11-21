@@ -1,0 +1,698 @@
+/* --- CSS VARIABLES & GENERAL RESET --- */
+:root {
+  /* Deep Teal / Petrol Blue Palette */
+  --primary-color: #d80606;        /* Deep Teal */
+  --primary-dark: #4d0000;         /* Darker Teal for hover */
+  --primary-light: #E0F2F1;        /* Very light background */
+  
+  --text-dark: #263238;           /* Dark Navy Text */
+  --text-light: #546E7A;          /* Blue-Grey for secondary text */
+  --bg-soft: #F5F8FA;             /* Very subtle light background */
+  --card-bg: #ffffff;
+  
+  --shadow-color-rgb: 0, 105, 92;  /* RGB for primary color shadows */
+  --shadow-md: 0 10px 30px rgba(0,0,0,0.06);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* --- BODY & TYPOGRAPHY --- */
+body {
+  font-family: 'Inter', 'Segoe UI', 'Arial', sans-serif;
+  background-color: var(--bg-soft);
+  color: var(--text-dark);
+  line-height: 1.6;
+  padding: 0;
+  
+  /* Required for background image positioning */
+  position: relative; 
+  z-index: 1; 
+}
+
+/* --- UTILITY ADDITIONS FOR LOGIN/REGISTER PAGES --- */
+
+.p-muted {
+    color: var(--text-light);
+    font-size: 15px;
+}
+
+.text-primary-link {
+    color: var(--primary-color);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.text-primary-link:hover {
+    color: var(--primary-dark);
+}
+/* --- FIXED BACKGROUND IMAGE LAYER --- */
+/* --- FIXED BACKGROUND IMAGE LAYER --- */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    /* --- REPLACE THIS URL WITH YOUR IMAGE PATH --- */
+    background-image: url('C:\Users\Abhishek\OneDrive\Desktop\Kachra\DEMO\Client\frontend\src\PBG.jpg'); 
+    
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    /* MODIFICATION 1: Use a simple color blend (softening effect) */
+    background-blend-mode: color; 
+    
+    /* MODIFICATION 2: Decrease the background-color opacity slightly */
+    background-color: rgba(0, 105, 92, 0.01); 
+    
+    /* MODIFICATION 3: INCREASE THE IMAGE OPACITY TO MAKE IT MORE VISIBLE */
+    /* Changed from 0.1 to 0.3 for a much clearer presence */
+    opacity: 0.3; 
+    
+    z-index: -1; 
+}
+
+
+h1, h2, h3 {
+  color: var(--text-dark);
+  margin-bottom: 15px;
+  font-weight: 800;
+}
+
+h1 { font-size: 28px; }
+h2 { font-size: 24px; }
+h3 { font-size: 20px; }
+
+p {
+  margin-bottom: 10px;
+  color: var(--text-light);
+}
+
+/* --- BUTTONS & LINKS --- */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  border: none;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin: 5px;
+  transition: all 0.2s ease;
+}
+
+/* Primary CTA button (Deep Teal) */
+.cta-btn {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 12px 28px;
+  font-weight: 700;
+  box-shadow: 0 6px 14px rgba(var(--shadow-color-rgb), 0.25);
+}
+
+.cta-btn:hover {
+  background-color: var(--primary-dark);
+  box-shadow: 0 8px 18px rgba(var(--shadow-color-rgb), 0.35);
+}
+
+.cta-btn:active {
+  transform: translateY(1px);
+}
+
+/* Secondary Outline Button */
+.btn-outline {
+  background: transparent;
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+  padding: 10px 24px;
+  font-weight: 700;
+}
+
+.btn-outline:hover {
+  background: var(--primary-light);
+}
+
+/* Utility Class for full width buttons */
+.full-width {
+    width: 100%;
+}
+.mt-15 {
+    margin-top: 15px;
+}
+
+/* --- FORM STYLES (Predict, Login, Register) --- */
+.form-page {
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 0 16px;
+}
+
+.form-header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+.form-header h2 {
+    font-size: 32px;
+    color: var(--primary-color);
+}
+
+.form-card {
+  background: var(--card-bg);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: var(--shadow-md);
+}
+
+.form-row {
+  margin-bottom: 18px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: var(--text-dark);
+  font-size: 15px;
+}
+
+/* --- Input Styling Block from Red-Themed CSS --- */
+input[type="text"],
+input[type="number"],
+input[type="password"],
+input[type="email"]
+textarea,
+input[type="file"],
+select {
+  /* This ensures the field is full width */
+  width: 100%; 
+  
+  padding: 12px;
+  border: 1px solid #E5E5E5; 
+  /* This ensures the rounded corners are applied */
+  border-radius: 8px; 
+  
+  font-size: 15px;
+  transition: border-color 0.2s;
+  /* This sets the soft background color */
+  background-color: #FAFAFA; 
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(var(--shadow-color-rgb), 0.15);
+  background-color: var(--card-bg);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 30px;
+}
+.form-actions button {
+    margin: 0;
+}
+
+/* File Upload Label Styling (for ImagePredict) */
+.file-upload-container {
+    margin-bottom: 25px;
+}
+.file-upload-label {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 15px;
+    border: 2px dashed var(--primary-color);
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: var(--primary-light);
+    color: var(--primary-dark);
+    font-weight: 700;
+    transition: all 0.2s;
+}
+.file-upload-label:hover {
+    background-color: #B2DFDB;
+}
+
+
+/* --- LANDING PAGE STYLES --- */
+.landing-page-wrap {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent; /* Rely on body background */
+}
+
+.landing-card {
+    max-width: 420px;
+    padding: 36px 30px;
+    border-radius: 18px;
+    background: var(--card-bg);
+    box-shadow: 0 12px 45px rgba(40,40,50,0.08);
+    text-align: center;
+}
+
+.brand-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+    gap: 12px;
+}
+
+.brand-badge-large {
+    display: inline-flex; 
+    width: 48px; 
+    height: 48px;
+    align-items: center; 
+    justify-content: center;
+    border-radius: 10px; 
+    background: var(--primary-color);
+    color: white; 
+    font-weight: 900; 
+    font-size: 28px;
+    box-shadow: 0 4px 12px rgba(var(--shadow-color-rgb), 0.3);
+}
+
+.brand-title {
+    font-weight: 900; 
+    font-size: 28px; 
+    color: var(--text-dark);
+}
+
+.landing-welcome {
+    margin-bottom: 34px; 
+    color: var(--text-light); 
+    font-size: 17px;
+}
+
+.landing-actions {
+    display: flex; 
+    flex-direction: column; 
+    gap: 12px;
+}
+
+
+/* --- DASHBOARD / HOME GENERAL STYLES (Refined) --- */
+.home-container, .dash-wrap {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 16px;
+}
+
+.home-card, .tile {
+  background: var(--card-bg);
+  border-radius: 14px;
+  padding: 34px 28px;
+  margin: 20px 0;
+  box-shadow: var(--shadow-md);
+  text-align: center;
+}
+
+.dash-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 16px 20px;
+  box-shadow: var(--shadow-md);
+  margin-bottom: 24px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand h1 {
+  font-size: 22px;
+  margin: 0;
+  color: var(--text-dark);
+}
+
+.brand-badge {
+  display: inline-flex;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary-color);
+  color: white;
+  font-weight: 800;
+}
+
+/* Stat Cards (refined look) */
+.stat-card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: var(--shadow-md);
+  border-left: 4px solid var(--primary-color);
+}
+.stat-label {
+  color: var(--text-light);
+  font-size: 13px;
+}
+
+
+/* --- TABLE STYLES --- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background: white;
+  box-shadow: var(--shadow-md);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+th {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 12px;
+  text-align: left;
+  font-weight: 700;
+}
+
+td {
+  padding: 12px;
+  border-bottom: 1px solid #ECEFF1;
+}
+
+tr:hover {
+  background-color: #fafafa;
+}
+
+/* --- UTILITIES & MESSAGES --- */
+.error {
+  color: #d9534f;
+  font-size: 14px;
+  margin-top: 5px;
+  font-weight: 600;
+}
+
+.loading-message, .success-message {
+    text-align: center;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 20px;
+    font-weight: 600;
+}
+
+.loading-message {
+    background-color: #F5F5F5;
+    color: var(--text-dark);
+    border: 1px solid #CFD8DC;
+}
+.success-message {
+    background-color: #D4EDDA; /* Soft Green */
+    color: #155724;
+    border: 1px solid #C3E6CB;
+}
+
+/* Result messages */
+.result-message {
+  background-color: var(--primary-light);
+  padding: 15px;
+  border-radius: 8px;
+  border-left: 4px solid var(--primary-color);
+  margin-top: 20px;
+  color: var(--text-dark);
+}
+
+/* Spacing utilities */
+.mt-20 { margin-top: 20px; }
+.mb-20 { margin-bottom: 20px; }
+.center { text-align: center; }
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .home-card, .landing-card, .form-card {
+    margin: 20px 10px;
+    padding: 25px 18px;
+  }
+  
+  .dash-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 15px;
+  }
+  .actions {
+      width: 100%;
+      justify-content: space-between;
+  }
+  .actions button {
+      width: 48%;
+  }
+  
+  table { font-size: 13px; }
+  
+  .form-actions {
+      flex-direction: column;
+      gap: 10px;
+  }
+  .form-actions button {
+      width: 100%;
+  }
+}
+
+/* Keep these grid styles for other components */
+.tiles-bottom { margin-top: 18px; }
+.test-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 8px 14px;
+  margin-top: 6px;
+}
+
+.test-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border: 1px solid #ECEFF1;
+  border-radius: 8px;
+  background: var(--card-bg);
+}
+.test-option input { transform: translateY(1px); }
+
+/* --- Input Styling Block from Red-Themed CSS --- */
+input[type="text"],
+input[type="number"],
+input[type="password"],
+textarea,
+input[type="file"],
+select {
+  /* This ensures the field is full width */
+  width: 100%; 
+  
+  padding: 12px;
+  border: 1px solid #E5E5E5; 
+  /* This ensures the rounded corners are applied */
+  border-radius: 8px; 
+  
+  font-size: 15px;
+  transition: border-color 0.2s;
+  /* This sets the soft background color */
+  background-color: #FAFAFA; 
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(var(--shadow-color-rgb), 0.15);
+  background-color: var(--card-bg);
+}
+
+/* ---------------------------
+   Home / Dashboard overrides
+   (Paste this at the END of your current style.css)
+   --------------------------- */
+
+/* Soft page background like old UI */
+body {
+  background: #f4f4f9; /* soft grey */
+}
+
+/* Wrapper spacing (centered layout similar to old UI) */
+.dash-wrap, .home-wrap {
+  max-width: 1100px;
+  margin: 32px auto;
+  padding: 0 16px;
+}
+
+/* Header bar - white card with subtle shadow */
+.dash-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 16px 20px;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+  margin-bottom: 18px;
+}
+
+/* Brand on header */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.brand h1 {
+  font-size: 22px;
+  margin: 0;
+  color: #2e2e2e;
+  font-weight: 800;
+}
+
+/* Orange badge (keeps the old orange theme on home page) */
+.brand-badge {
+  display: inline-flex;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  align-items: center;
+  justify-content: center;
+  background: #cc5700;        /* orange */
+  color: #fff;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+/* Header actions */
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+/* Header buttons */
+.btn-outline {
+  background: transparent;
+  border: 2px solid #cc5700;
+  color: #cc5700;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.btn-outline:hover { background: #fff3eb; }
+
+.btn-solid {
+  background: #cc5700;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.btn-solid:hover { background: #b24c00; }
+
+/* Stats row & stat-cards */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 12px;
+  margin: 14px 0 20px;
+}
+.stat-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.06);
+  border-left: 4px solid #cc5700;
+}
+.stat-label { color: #666; font-size: 13px; margin-bottom: 6px; }
+.stat-value { font-size: 20px; font-weight: 800; color: #2e2e2e; }
+
+/* White cards that form the main content tiles (Enroll / History / Book) */
+.home-card, .tile {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 34px 28px;
+  margin: 26px 0;
+  box-shadow: 0 12px 26px rgba(0,0,0,0.08);
+  text-align: center;
+}
+
+.home-card h2, .tile h2 {
+  color: #2e2e2e;
+  font-weight: 800;
+  font-size: 22px;
+  margin-bottom: 18px;
+}
+
+/* Tile paragraph */
+.tile p {
+  color: #555;
+  margin-bottom: 16px;
+}
+
+/* Tiles grid */
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+/* Primary CTA button (orange style from old UI) */
+.cta-btn {
+  background-color: #cc5700;
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 0.06s ease, box-shadow 0.2s ease, background 0.2s ease;
+  box-shadow: 0 6px 14px rgba(204, 87, 0, 0.25);
+}
+.cta-btn:hover {
+  background-color: #b24c00;
+  box-shadow: 0 10px 20px rgba(204, 87, 0, 0.32);
+}
+.cta-btn:active { transform: translateY(1px); }
+
+/* Small responsive tweaks */
+@media (max-width: 768px) {
+  .home-card, .tile { padding: 26px 20px; }
+  .brand h1 { font-size: 18px; }
+  .brand-badge { width: 32px; height: 32px; }
+  .cta-btn { width: 100%; }
+}
+/* FORCE the 3 stat cards to show in ONE ROW */
+.stats-row {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.stats-row .stat-card {
+  flex: 1;                          /* equal widths */
+  min-width: 0;                     /* prevents overflow */
+}
